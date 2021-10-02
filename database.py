@@ -72,7 +72,7 @@ class Account:
 def process_data(data):
 
     #list to hold accounts
-    account_list = []
+    account_list = {}
 
     #loop list of entries
     for i in data:
@@ -81,15 +81,23 @@ def process_data(data):
         strings = i.split(',')
 
         #check if account name exists in accounts
-        if(any(a.account == strings[0] for a in  account_list)):
-            print(a.account)
+        if strings[0] in account_list:
+
+            #find account by account name
+            temp_acct = account_list.get(strings[0])
+            
+            temp_acct.add_info(strings[1], strings[2])
+
+            print
 
         else:
             #create new account if acount name does not exist
             temp_acct = Account(strings[0], strings[1], strings[2])
 
             #add new account to account list
-            account_list.append(temp_acct)
+            account_list[strings[0]] = (temp_acct)
+
+    print(account_list)
     
 def main():
 
