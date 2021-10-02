@@ -5,9 +5,11 @@ print("Number of arguments:", len(sys.argv))
 print("The arguments are:" , str(sys.argv))
 
 class Account:
-    def __init__(self, account):
+
+    def __init__(self, account, type, data):
         
         self.account = account
+
         self.business_type = None
         self.country = None
 
@@ -30,37 +32,65 @@ class Account:
         self.phone = None
         self.tax_id_number = None
 
+        self.add_info(type, data)
 
-class Individual:
-    def __init__(self, account):
-        self.account = account
-        self.country = None
-        self.first_name = None
-        self.last_name = None
-        self.first_name_kana = None
-        self.last_name_kana = None
-        self.date_of_birth = None
-        self.social_security_number = None
-        self.tax_id_number = None
-        self.email = None
-        self.phone = None
 
-class Companies:
-    def __init__(self, account):
-        self.account = account
-        self.name = None
-        self.director_name = None
-        self.employer_id_number = None
-        self.tax_id_number = None
-        self.support_email = None
-        self.phone = None
+
+    def add_info(self, type, data):
+        
+        if type == 'business_type':
+            self.business_type = data
+        elif type == 'country':
+            self.country = data
+        elif type == 'first_name':
+            self.first_name = data
+        elif type == 'last_name':
+            self.country = data
+        elif type == 'first_name_kana':
+            self.first_name_kana = data
+        elif type == 'last_name_kana':
+            self.last_name_kana = data
+        elif type == 'date_of_birth':
+            self.country = data
+        elif type == 'social_security_number':
+            self.social_security_number = data
+        elif type == 'email':
+            self.email = data
+        elif type == 'name':
+            self.name = data
+        elif type == 'director_name':
+            self.director_name = data
+        elif type == 'employer_id_number':
+            self.employer_id_number = data
+        elif type == 'support_email':
+            self.support_email = data
+        elif type == 'phone':
+            self.phone = data
+        elif type == 'tax_id_number':
+            self.tax_id_number = data
 
 def process_data(data):
 
-    for i in data:
-        string = i.split(',')
-        print(string)
+    #list to hold accounts
+    account_list = []
 
+    #loop list of entries
+    for i in data:
+
+        #split entries into  substrings
+        strings = i.split(',')
+
+        #check if account name exists in accounts
+        if(any(a.account == strings[0] for a in  account_list)):
+            print(a.account)
+
+        else:
+            #create new account if acount name does not exist
+            temp_acct = Account(strings[0], strings[1], strings[2])
+
+            #add new account to account list
+            account_list.append(temp_acct)
+    
 def main():
 
     # Creates list of argument names
