@@ -34,8 +34,6 @@ class Account:
 
         self.add_info(type, data)
 
-
-
     def add_info(self, type, data):
         
         if type == 'business_type':
@@ -69,6 +67,90 @@ class Account:
         elif type == 'tax_id_number':
             self.tax_id_number = data
 
+    #used to validate accounts based on business type and country
+    def validate(self):
+        
+        if self.business_type == None:
+            return False, 'business_type'
+        elif self.country == None:
+            return False, 'country'
+        elif self.business_type == 'company':
+            self.validate_company()
+        elif self.business_type == 'individual':
+            self.validate_individual()
+
+    def validate_individual(self):
+
+        unverified_list = []
+
+        if(self.country == 'US'): 
+
+            if(self.name == None):
+                unverified_list.append('name')
+            if(self.employer_id_number == None):
+                unverified_list.append('employer_id_number')
+            if(self.support_email == None):
+                unverified_list.append('support_email')
+            if(self.phone == None):
+                unverified_list.append('phone')
+       
+        elif(self.country == 'JP'):
+
+            if(self.name == None):
+                unverified_list.append('name')
+            if(self.employer_id_number == None):
+                unverified_list.append('employer_id_number')
+            if(self.support_email == None):
+                unverified_list.append('support_email')
+            if(self.phone == None):
+                unverified_list.append('phone')
+
+        elif(self.country == 'FR'):
+
+            if(self.name == None):
+                unverified_list.append('name')
+            if(self.employer_id_number == None):
+                unverified_list.append('employer_id_number')
+            if(self.support_email == None):
+                unverified_list.append('support_email')
+            if(self.phone == None):
+                unverified_list.append('phone')
+
+    def validate_company(self):
+
+        unverified_list = []
+
+        if(self.country == 'US'):
+
+            if(self.name == None):
+                unverified_list.append('name')
+            if(self.employer_id_number == None):
+                unverified_list.append('employer_id_number')
+            if(self.support_email == None):
+                unverified_list.append('support_email')
+            if(self.phone == None):
+                unverified_list.append('phone')
+
+        elif(self.country == 'JP'):
+
+            if(self.name == None):
+                unverified_list.append('name')
+            if(self.tax_id_number == None):
+                unverified_list.append('tax_id_number')
+            if(self.phone == None):
+                unverified_list.append('phone')
+
+        elif(self.country == 'FR'):
+
+            if(self.name == None):
+                unverified_list.append('name')
+            if(self.director_name == None):
+                unverified_list.append('director_name')
+            if(self.tax_id_number == None):
+                unverified_list.append('tax_id_number')
+            if(self.phone == None):
+                unverified_list.append('phone')
+
 def process_data(data):
 
     #list to hold accounts
@@ -87,8 +169,6 @@ def process_data(data):
             temp_acct = account_list.get(strings[0])
             
             temp_acct.add_info(strings[1], strings[2])
-
-            print
 
         else:
             #create new account if acount name does not exist
