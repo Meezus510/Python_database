@@ -85,34 +85,46 @@ class Account:
 
         if(self.country == 'US'): 
 
-            if(self.name == None):
-                unverified_list.append('name')
-            if(self.employer_id_number == None):
-                unverified_list.append('employer_id_number')
-            if(self.support_email == None):
-                unverified_list.append('support_email')
+            if(self.first_name == None):
+                unverified_list.append('first_name')
+            if(self.last_name == None):
+                unverified_list.append('last_name')
+            if(self.date_of_birth == None):
+                unverified_list.append('date_of_birth')
+            if(self.social_security_number == None):
+                unverified_list.append('social_security_number')
+            if(self.email == None):
+                unverified_list.append('email')
             if(self.phone == None):
                 unverified_list.append('phone')
        
         elif(self.country == 'JP'):
 
-            if(self.name == None):
-                unverified_list.append('name')
-            if(self.employer_id_number == None):
-                unverified_list.append('employer_id_number')
-            if(self.support_email == None):
-                unverified_list.append('support_email')
-            if(self.phone == None):
-                unverified_list.append('phone')
+            if(self.first_name == None):
+                unverified_list.append('first_name')
+            if(self.last_name == None):
+                unverified_list.append('last_name')
+            if(self.first_name_kana == None):
+                unverified_list.append('first_name_kana')
+            if(self.last_name_kana == None):
+                unverified_list.append('last_name_kana')
+            if(self.date_of_birth == None):
+                unverified_list.append('date_of_birth')
+            if(self.tax_id_number == None):
+                unverified_list.append('tax_id_number')
+            if(self.email == None):
+                unverified_list.append('email')
 
         elif(self.country == 'FR'):
 
-            if(self.name == None):
-                unverified_list.append('name')
-            if(self.employer_id_number == None):
-                unverified_list.append('employer_id_number')
-            if(self.support_email == None):
-                unverified_list.append('support_email')
+            if(self.first_name == None):
+                unverified_list.append('first_name')
+            if(self.last_name == None):
+                unverified_list.append('last_name')
+            if(self.tax_id_number == None):
+                unverified_list.append('tax_id_number')
+            if(self.email == None):
+                unverified_list.append('email')
             if(self.phone == None):
                 unverified_list.append('phone')
 
